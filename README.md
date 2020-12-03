@@ -79,7 +79,7 @@ To achieve this, a good question should contain the following:
   - if you have a function with random processes: a fixed seed before
     your example starts (fix seeds by calling set.seed() function)
 
-### R can help you to ask a good question\!
+## 4\. R can help you to ask a good question\!
 
 Luckily, there are nice R functions that help you create a reproducible
 example of your problem/question including data, plots and error
@@ -91,16 +91,20 @@ answering much easier. Reproducible examples are key to getting your
 questions answered fast, therefore it is worth to learn how to produce
 them from the very beginning.
 
-#### Include a minimal dataset
+### Include a minimal dataset
 
 The easiest way to share your data is by using the dput command.
 
-Basic: - Copy and paste the output of `dput(<your_data>)`
+Basic:
 
-More advanced (if your data is too large for dput): - Create a gist with
-dput in it and provide the link (e.g. on Github, more info
-[here](https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/creating-gists))
-- Create a pastebin with dput in it and provide the link
+  - Copy and paste the output of `dput(<your_data>)`
+
+More advanced (if your data is too large for dput):
+
+  - Create a gist with dput in it and provide the link (e.g. on Github,
+    more info
+    [here](https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/creating-gists))
+  - Create a pastebin with dput in it and provide the link
 
 **Example**
 
@@ -120,6 +124,7 @@ mtcars[1:5, 1:2]
 #> Datsun 710        22.8   4
 #> Hornet 4 Drive    21.4   6
 #> Hornet Sportabout 18.7   8
+
 # get code that generates the frist five lines and first two columns your dataset
 dput(mtcars[1:5, 1:2])
 #> structure(list(mpg = c(21, 21, 22.8, 21.4, 18.7), cyl = c(6, 
@@ -127,7 +132,7 @@ dput(mtcars[1:5, 1:2])
 #> "Hornet 4 Drive", "Hornet Sportabout"), class = "data.frame")
 ```
 
-#### Create an example with runnable code using the `reprex` package
+### Create an example with runnable code using the `reprex` package
 
 The reprex package helps you turn your code into reproducible examples.
 
@@ -142,7 +147,7 @@ output without running it themselves - code can easily be run
 
 **In which situations is this helpful?**
 
-  - When asking a question on a forum, Stackoverflow, GitHub, …
+  - When asking a question on a forum, Stack Overflow, GitHub, …
   - When asking a colleague or friend about some code issues that you
     have
   - When you want to paste R code in a highlighted and formatted form
@@ -245,7 +250,8 @@ reprex({
 If you now call this, your rendered reprex will be on your clipboard and
 can be pasted somewhere.
 
-##### So which setup should be chosen for the discussion forum in Blackboard?
+**So which setup should be chosen for the discussion forum in
+Blackboard?**
 
 Unfortunately, neither the blackboard forum nor the Webex meetings chat
 does support markdown formatting. If you use the forum, Webex chat or
@@ -253,7 +259,7 @@ Email to share your code I therefore suggest to use `venue = "r"`. This
 does not support syntax highlighting and does not include plots but it
 ensures that all the output of your code is included.
 
-So a concrete examples would be:
+So a concrete example would be:
 
 ``` r
 # This includes the session info and does not show the rendered reprex locally 
@@ -261,16 +267,23 @@ reprex(venue="r",show=FALSE, si=TRUE)
 ```
 
 If you want to include a plot in your reproducible example, I suggest
-you use `venu = "html`. Like this, a link to the image is included and
-is shown below your code in the forum. In the blackboard forum, you can
-include html code by clicking on the little `HTML button` in the editor.
-If you don’t see this button, you have to expand your toolbar, by
-clicking on the two arrows on the right. If you click on the HTML
-button, a window opens, where your post is shown in html format. Your
-can just past your reproducible example in there after inserting a new
-line.
+you use `venu = "html"`. So something like:
 
-##### Addins
+``` r
+reprex(venue="html",show=FALSE, si=TRUE)
+```
+
+A link to the image is included in the html and the plot will be shown
+below your code in the forum.
+
+In the blackboard forum, you can include html code by clicking on the
+little `HTML button` in the editor. If you don’t see this button, you
+have to expand your toolbar, by clicking on the two arrows on the right.
+If you click on the HTML button, a window opens, where your post is
+shown in html format. Your can just past your reproducible example in
+there after inserting a new line.
+
+#### Addins
 
 If you install the reprex package, you will find two Addins (in the top
 row of RStudio, right below Help). There is the addin `Reprex
@@ -309,7 +322,7 @@ library(styler)
 When you installed the package, there is also a addin that you can use
 to format your code. You can select the code you want to style with the
 mouse, got to `Addins->Style Selection` and voilà, your code is styled
-nicely. By default, style uses the style guide of the tidyverse (see
+nicely. By default, styler uses the style guide of the tidyverse (see
 [here](https://style.tidyverse.org/) for more info) which is a pretty
 common and well thought through standard. So you can just leave it like
 that.
@@ -323,8 +336,6 @@ reprex function that does that for you.
 
 ``` r
 reprex(venue="r", show=FALSE, si=TRUE, style=TRUE)
-#> No input provided and clipboard is not available.
-#> Rendering reprex...
 ```
 
 Like that, the reprex on your clipboard will be styled according to the
