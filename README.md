@@ -10,7 +10,9 @@ guidelines for problem solving and question asking to make the whole
 experience more pleasant and productive.
 
 Please read the following guide to get an idea of how to trouble-shoot R
-problems and where and how to get the best help.
+problems and where and how to get the best help. Also have a look at the
+file `Example.R` from this repository. You can download this script and
+try it out yourself.
 
 ## 1\. Read the R documentation before you ask
 
