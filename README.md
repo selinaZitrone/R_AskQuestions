@@ -1,4 +1,27 @@
 
+  - [Common error messages and
+    problems](#common-error-messages-and-problems)
+  - [What to do if you get stuck with
+    R](#what-to-do-if-you-get-stuck-with-r)
+      - [1. Read the R documentation before you
+        ask](#read-the-r-documentation-before-you-ask)
+      - [2. Look for the answer on the
+        web](#look-for-the-answer-on-the-web)
+          - [Tips for searching](#tips-for-searching)
+      - [3. How to ask a good question?](#how-to-ask-a-good-question)
+      - [4. How R can help you to ask a good
+        question](#how-r-can-help-you-to-ask-a-good-question)
+          - [Include a minimal dataset with
+            `dput`](#include-a-minimal-dataset-with-dput)
+          - [Create an example with runnable code using the `reprex`
+            package](#create-an-example-with-runnable-code-using-the-reprex-package)
+      - [5. Some words on code style](#some-words-on-code-style)
+          - [Use styler on your reprex](#use-styler-on-your-reprex)
+      - [Further ressources](#further-ressources)
+          - [Good adresses for help and
+            inspiration:](#good-adresses-for-help-and-inspiration)
+  - [Acknowledgements](#acknowledgements)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # Common error messages and problems
@@ -136,10 +159,10 @@ help(`[`)
 Learning how to search for an answer on the internet is arguably one of
 the most important problem solving skills when programming. In most (if
 not all) cases, you are not the first one having a specific problem and
-others already posted questions about it on forums such as [Stack
-Overflow](https://stackoverflow.com). You just need to learn how to
-formulate a question and you will find the correct answer within the
-first hits from your search engine of choice.
+others already posted questions about it on forums such as Stack
+Overflow. You just need to learn how to formulate a question and you
+will find the correct answer within the first hits from your search
+engine of choice.
 
 So before asking on a forum yourself, try looking for an answer online.
 
@@ -178,7 +201,7 @@ To achieve this, a good question should contain the following:
   - if you have a function with random processes: a fixed seed before
     your example starts (fix seeds by calling set.seed() function)
 
-## 4\. R can help you to ask a good question\!
+## 4\. How R can help you to ask a good question
 
 Luckily, there are nice R functions that help you create a reproducible
 example of your problem/question including data, plots and error
@@ -190,7 +213,7 @@ answering much easier. Reproducible examples are key to getting your
 questions answered fast, therefore it is worth to learn how to produce
 them from the very beginning.
 
-### Include a minimal dataset
+### Include a minimal dataset with `dput`
 
 The easiest way to share your data is by using the dput command.
 
@@ -444,7 +467,23 @@ tidyverse style guide.
 
   - more on how to make great reproducible examples in R
     [here](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example)
-  - great into to the `reprex` package by Jenny Bryan in \[this
+  - great intro to the `reprex` package by Jenny Bryan in \[this
     video\](video\](<https://community.rstudio.com/t/video-reproducible-examples-and-the-reprex-package/14732>)
   - Github repository of the [`styler`
     package](https://github.com/r-lib/styler)
+
+### Good adresses for help and inspiration:
+
+  - [Stack Overflow](https://stackoverflow.com): Probably the most
+    famous forum for questions
+  - [RBloggers](https://www.r-bloggers.com/): Many tutorials
+  - [DiscoRd](https://discord.gg/FQp6ZNd): Discord server where you can
+    ask questions, find resources and chat with other R users about R
+    Stuff
+  - If you are a twitter user, you can follow the `#rstats` hashtag
+
+# Acknowledgements
+
+Thanks to @AnneLew and the person behind the readme docs of the
+[DiscoRd](https://discord.gg/FQp6ZNd) server for providing much of the
+material presented here.
