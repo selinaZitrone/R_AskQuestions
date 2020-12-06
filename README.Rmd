@@ -12,17 +12,101 @@ knitr::opts_chunk$set(
 library(reprex)
 ```
 
+# Common error messages and problems
+
+Here are some of the most common errors that R beginners have to face:
+
+**1. Version of R or RStudio are too old**
+
+  - Error message: `Package is not compatible with your version or RStudio`
+  - Solution: Update R or RStudio to the newest version
+
+**2. Syntax errors**
+
+  - They are usually easy to find by reading the error message
+  - Common errors: forgot a comma, closing bracket is missing, ...
+  
+**3. R could not find function**
+
+  - Error message: `R could not find function ...`
+  - Check if the package that contains the function is installed and loaded
+  - Check if the function name is written correctly. Did you e.g. write 
+  `lenght(1:10)` instead of `length(1:10)`?
+
+**4. Functions are masked**
+
+ - There are some packages that have functions using the same name as functions
+ in base R or in other packages. 
+ If you load one of these packages you will get a warning, telling you that a function 
+ is masked by a function from another package. If you call a masked function,
+ the one from the package that was attached last  will be used.
+  - Example: If you load the package `dplyr`, you will get the following warning:
+ 
+ `The following objects are masked from ‘package:stats’: filter, lag`
+ 
+   - To be clear which function you mean in this case, tell R which 
+ package it comes from:
+  If you want to use the function filter, don't just call `filter()` but call 
+  `stats::filter()` or `dplyr::filter()` to be clear about which filter function you mean. 
+  
+**5. Missing objects**
+
+- Error message: `Error: object 'a' not found`
+- Check if the object name is correct (any typos?, capitalization?, ...)
+- Check if you are missing `"` or `'` anywhere: 
+  - Example: If you want to create a character vector you have to call `c('a','b','c')` 
+  and not `c(a,b,c)`
+
+**6. Wrong data format**
+
+- Does not necessarily trigger an error message, but results/plots are looking wrong.
+- Are the data imported correctly?
+  - E.g. R sometimes automatically converts strings to factors when reading data.
+- Check if your data has the right format with
+  - `str(data)` (This is very useful: always check that if something goes wrong with your data analysis)
+  - `class(data)`
+  - `head(data)`
+  - `summary(data)`
+  
+**7. R crashes**
+
+ - Sometimes R crashes and you have to restart R
+ - Be sure to save your scripts regularly!
+ 
+```{r echo=FALSE}
+knitr::include_graphics(here::here("images/R_Crash.png"))
+```
+ 
+**8. The console only prints `+`**
+
+- Every time you try to execute a new statement the console only prints `+` but does not execute the statement
+- Problem is that there are more open than closed brackets in your code. Therefore R is waiting for more input until all brackets are closed.
+- Solution: Go to the console and hit Escape. Then you will see the `>` sign again which means that R is ready for new input. 
+- Before you execute new code, look for missing closing brackets in your code (usually this is already indicated with a red x on the left side of your script in RStudio).
+
+```{r echo=FALSE}
+knitr::include_graphics(path = here::here("images/Console_plus.png"))
+```
+
+**9. Warnings**
+
+- Sometimes R warns you that your code produced a number of warnings, that you can
+read by calling the function `warnings()` in the console. 
+- Warnings do not always mean that you did something wrong. You also get warnings if you
+have NA values in your data, if a function is deprecated, ...
+- It is however important to read the warnings, understand them and only continue
+if you are sure that they don't mean that something in your code is wrong.
+
+
 # What to do if you get stuck with R
 
 It's normal to get stuck on a problem where you need help from someone. Don't worry!
-The course forum (and other online forums) ar the perfect place to ask your question.
+The course forum (and other online forums) are the perfect place to ask your question.
 However, it is important to follow some guidelines for problem solving and question 
 asking to make the whole experience more pleasant and productive.
 
-Please read the following guide to get an idea of how to trouble-shoot R problems and 
-where and how to get the best help.
-Also have a look at the file `Example.R` from this repository. You can download this script
-and try it out yourself.
+Please read the following guide to get an idea of how to trouble-shoot R problems and where and how to get the best help.
+Also have a look at the file `Example.R` from this repository. You can download this script and try it out yourself.
 
 ## 1. Read the R documentation before you ask
 
@@ -48,7 +132,7 @@ help(`[`)
 Learning how to search for an answer on the internet is arguably one of the most important
 problem solving skills when programming. In most (if not all) cases, you are not 
 the first one having a specific problem and others already posted questions about it on
-forums such as Stackoverflow. You just need to learn how to formulate
+forums such as [Stack Overflow](https://stackoverflow.com). You just need to learn how to formulate
 a question and you will find the correct answer within the first hits from your search
 engine of choice.
 
@@ -56,13 +140,13 @@ So before asking on a forum yourself, try looking for an answer online.
 
 ### Tips for searching
 
-- If you got an error or warning search with keywords: R, function name, error message
+- If you got an error or warning search with keywords: R + function name + error message
+- If you don't know how to do something in R try searching
+  - "How to ...", e.g. "R ggplot how to change axis title"
 - Use RStudio and R in English. Then can easily copy and paste the error message
 from the console to your search engine and find answers
     - calling `Sys.setenv(LANGUAGE='en')` in the console should do the trick and change
     your messages to English
-- If you don't know how to do something in R try searching
-  - "How to ...", e.g. "R ggplot how to change axis title"
 - Always search in English to get much more answers
 
 ## 3. How to ask a good question?
@@ -77,7 +161,7 @@ To achieve this, a good question should contain the following:
 - **A clear problem statement**: Provide all necessary details. 
 What are you trying to do? What have you tried that didn't work? 
 What is your expected output?
-- **A minimal dataset** to demonstrate the problem
+- **A minimal data set** to demonstrate the problem
   - smallest data set necessary to reproduce the problem
   - Don't describe your data without providing it! 
 - **A minimal runnable** code to reproduce the error/problem
@@ -113,17 +197,17 @@ More advanced (if your data is too large for dput):
 
 **Example**
 
-Assume you are using the built-in dataset `mtcars` for your analysis. If you want 
-to provide others with code that reproduces this dataset, you can use `dput`.
+Assume you are using the built-in data set `mtcars` for your analysis. If you want 
+to provide others with code that reproduces this data set, you can use `dput`.
 The output code of `dput` can be copy-pasted to any R session to reproduce the 
-dataset. If your dataset is large, try to provide the minimum necessary to reproduce
+data set. If your data set is large, try to provide the minimum necessary to reproduce
 your problem. E.g. provide a subset with fewer columns and fewer rows.
 
 ```{r}
 # This is how the data looks like
 mtcars[1:5, 1:2]
 
-# get code that generates the frist five lines and first two columns your dataset
+# get code that generates the first five lines and first two columns your data set
 dput(mtcars[1:5, 1:2])
 ```
 
@@ -151,7 +235,7 @@ Because
 
 **How to do this?**
 
-Before you get started, first (install) and load the `reprex` package (Consider adding reprex to your Rstudio profile if you use it more often. Then you don't have to load it every time you need it)
+Before you get started, first (install) and load the `reprex` package (Consider adding reprex to your RStudio profile if you use it more often. Then you don't have to load it every time you need it)
 
 ```{r eval=FALSE}
 install.packages("reprex")
@@ -174,13 +258,13 @@ paste the content of your clipboard somewhere, you will see that it is formatted
 as markdown, including the code, but also the console output that it created.
 This can now be be pasted into your question e.g. on Github.
 
-Not all plattforms support this kind of markdown syntax and you can specify to 
+Not all platforms support this kind of markdown syntax and you can specify to 
 which platform the output of reprex should be tuned to by using the `venue` argument.
 
 Those are some of the options:
 
 ```{r eval = FALSE}
-# GitHub (default) (this is also good for Discord, you only have to remove the whitespace between 
+# GitHub (default) (this is also good for Discord, you only have to remove the white space between 
 # the backticks and the r)
 # you can also include your session info with si = TRUE
 reprex(mean(rnorm(100)),
@@ -201,8 +285,8 @@ reprex(mean(rnorm(100)),
 
 # as an rtf (experimental, so far only really works on mac because you need the command line
 # tool highlight installed)
-# but it's perfect to create code snipptes e.g. for powerpoint etc
-# you can exclude the advertisment for reprex with advertise = F
+# but it's perfect to create code snippets e.g. for powerpoint etc
+# you can exclude the advertisement for reprex with advertise = F
 # see also here if you want to use it (on Mac) https://reprex.tidyverse.org/articles/articles/rtf.html
 reprex(mean(rnorm(100)),
        venue = "rtf",
@@ -286,7 +370,7 @@ If you copy some code e.g. from Stack Overflow and paste it into your R session 
 you can do it the other way around. Copy the code (including comments of the answer) 
 to the clipboard and run `reprex_clean()`. Now you can paste the clean code into your R-Script.
 
-## 4. Some words on code style
+## 5. Some words on code style
 
 If you share your code with others, it's important that it is formatted in a readable 
 way following good practice standards. There are different standards around, and
