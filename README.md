@@ -69,7 +69,7 @@ Here are some of the most common errors that R beginners have to face:
   - Sometimes R crashes and you have to restart R
   - Be sure to save your scripts regularly\!
 
-![](C:/Users/Selina_User/Files_Selina/R_Projects/AG_Tietjen/R_AskQuestions/images/R_Crash.png)<!-- -->
+![](images/R_Crash.png)<!-- -->
 
 **8. The console only prints `+`**
 
@@ -84,7 +84,7 @@ Here are some of the most common errors that R beginners have to face:
     your code (usually this is already indicated with a red x on the
     left side of your script in RStudio).
 
-![](C:/Users/Selina_User/Files_Selina/R_Projects/AG_Tietjen/R_AskQuestions/images/Console_plus.png)<!-- -->
+![](images/Console_plus.png)<!-- -->
 
 **9. Warnings**
 

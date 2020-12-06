@@ -74,7 +74,7 @@ Here are some of the most common errors that R beginners have to face:
  - Be sure to save your scripts regularly!
  
 ```{r echo=FALSE}
-knitr::include_graphics(here::here("images/R_Crash.png"))
+knitr::include_graphics("images/R_Crash.png")
 ```
  
 **8. The console only prints `+`**
@@ -85,7 +85,7 @@ knitr::include_graphics(here::here("images/R_Crash.png"))
 - Before you execute new code, look for missing closing brackets in your code (usually this is already indicated with a red x on the left side of your script in RStudio).
 
 ```{r echo=FALSE}
-knitr::include_graphics(path = here::here("images/Console_plus.png"))
+knitr::include_graphics(path ="images/Console_plus.png")
 ```
 
 **9. Warnings**
