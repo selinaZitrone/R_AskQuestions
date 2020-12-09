@@ -124,10 +124,10 @@ Here are some of the most common errors that R beginners have to face:
 # What to do if you get stuck with R
 
 It’s normal to get stuck on a problem where you need help from someone.
-Don’t worry\! The course forum (and other online forums) are the perfect
-place to ask your question. However, it is important to follow some
-guidelines for problem solving and question asking to make the whole
-experience more pleasant and productive.
+Don’t worry\! Online forums are the perfect place to ask your question.
+However, it is important to follow some guidelines for problem solving
+and question asking to make the whole experience more pleasant and
+productive.
 
 Please read the following guide to get an idea of how to trouble-shoot R
 problems and where and how to get the best help. Also have a look at the
@@ -137,7 +137,7 @@ try it out yourself.
 ## 1\. Read the R documentation before you ask
 
 Often, questions about how to use a particular function are solved by
-just reading the doc. To bring up the doc for a function in R, type ?
+just reading the doc. To bring up the doc for a function in R, type `?`
 followed by the function name to check the doc for the function, e.g.:
 
 ``` r
@@ -146,8 +146,8 @@ help(mean)
 ```
 
 Some special functions start with a symbol instead of an alphabet. In
-such cases, wrap the function in backticks \`\`. e.g., to check the doc
-for the \[ function:
+such cases, wrap the function in backticks, e.g., to check the doc for
+the `[` function:
 
 ``` r
 ?`[`
@@ -182,9 +182,9 @@ So before asking on a forum yourself, try looking for an answer online.
 ## 3\. How to ask a good question?
 
 If you didn’t find the answer with any of the above mentioned methods,
-you can ask a question on a forum so that others can help you. You
-should ask your questions as clear as possible to minimize guesswork and
-make answering easy and effective.
+you can ask colleagues and friends or ask a question on a forum so that
+others can help you. You should ask your questions as clear as possible
+to minimize guesswork and make answering easy and effective.
 
 To achieve this, a good question should contain the following:
 
@@ -486,4 +486,4 @@ tidyverse style guide.
 
 Thanks to @AnneLew and the person behind the readme docs of the
 [DiscoRd](https://discord.gg/FQp6ZNd) server for providing much of the
-material presented here.
+material presented.
