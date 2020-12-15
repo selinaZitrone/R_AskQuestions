@@ -11,15 +11,20 @@
       - [3. How to ask a good question?](#how-to-ask-a-good-question)
       - [4. How R can help you to ask a good
         question](#how-r-can-help-you-to-ask-a-good-question)
-          - [Include a minimal dataset with
+          - [4.1 Include a minimal dataset with
             `dput`](#include-a-minimal-dataset-with-dput)
-          - [Include an example with runnable code using the `reprex`
+          - [4.2 Include an example with runnable code using the
+            `reprex`
             package](#include-an-example-with-runnable-code-using-the-reprex-package)
+          - [The other way around with
+            `reprex_clean()`](#the-other-way-around-with-reprex_clean)
+          - [Other ways to produce a
+            reprex](#other-ways-to-produce-a-reprex)
       - [5. Some words on code style](#some-words-on-code-style)
           - [Use styler on your reprex](#use-styler-on-your-reprex)
-      - [Further ressources](#further-ressources)
-          - [Good adresses for help and
-            inspiration](#good-adresses-for-help-and-inspiration)
+  - [Further ressources](#further-ressources)
+      - [Good adresses for help and
+        inspiration](#good-adresses-for-help-and-inspiration)
   - [Acknowledgements](#acknowledgements)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -213,7 +218,7 @@ answering much easier. Reproducible examples are key to getting your
 questions answered fast, therefore it is worth to learn how to produce
 them from the very beginning.
 
-### Include a minimal dataset with `dput`
+### 4.1 Include a minimal dataset with `dput`
 
 The easiest way to share your data is by using the dput command.
 
@@ -255,7 +260,7 @@ dput(mtcars[1:5, 1:2])
 #> "Hornet 4 Drive", "Hornet Sportabout"), class = "data.frame")
 ```
 
-### Include an example with runnable code using the `reprex` package
+### 4.2 Include an example with runnable code using the `reprex` package
 
 The reprex package helps you turn your code into **{repr}**oducible
 **{ex}**amples.
@@ -401,7 +406,7 @@ If you click on the HTML button, a window opens, where your post is
 shown in html format. Your can just past your reproducible example in
 there after inserting a new line.
 
-#### The other way around with `reprex_clean()`
+### The other way around with `reprex_clean()`
 
 If you copy a code example e.g. from Stack Overflow and paste it into
 your R session to run it, you can use `reprex` to turn the example into
@@ -409,9 +414,9 @@ runnable code without the output. Just copy the code (including comments
 of the answer) to the clipboard and run `reprex_clean()`. Now you can
 paste the clean code into your R-Script.
 
-#### Other ways to produce a reprex
+### Other ways to produce a reprex
 
-**Use the Addin**
+**1. Use the Addin**
 
 If you installed the reprex package, have a look at your RStudio Addins.
 There, you will find a section for `reprex` with two option: `Reprex
@@ -425,7 +430,7 @@ highlighted code. You can also highlight code and then use the Addin
 `Render reprex` which lets you specify source of the reprex, target
 venue etc instead of using the default values.
 
-<a name="shortcut"></a>**Use a keyboard shortcut**
+<a name="shortcut"></a>**2. Use a keyboard shortcut**
 
 You can also bind the two functions `Reprex selection` and `Render
 reprex` to a keyboard shortcut of your choice. Then you neither have to
@@ -434,7 +439,7 @@ by going to `Tools -> Modify Keyboard Shortcuts`. Then filter the list
 with `reprex` and you can assign a keyboard shortcut of your choice (of
 course it has to be a shortcut unused by other functions).
 
-**Add `reprex` to your `.Rprofile`**
+**3. Add `reprex` to your `.Rprofile`**
 
 If you use the reprex package often, and you don’t want to load it into
 your R session every time, adding reprex to your R profile. Then you
@@ -517,7 +522,7 @@ reprex(venue = "r", show = FALSE, si = TRUE, style = TRUE)
 Now the reprex on your clipboard will be styled according to the
 tidyverse style guide.
 
-## Further ressources
+# Further ressources
 
   - more on how to make great reproducible examples in R
     [here](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example)
@@ -528,7 +533,7 @@ tidyverse style guide.
   - What they forgot to teach you about R, [book](https://rstats.wtf/)
     by Jenny Bryan and Jim Hester
 
-### Good adresses for help and inspiration
+## Good adresses for help and inspiration
 
   - [Stack Overflow](https://stackoverflow.com): Probably the most
     famous forum for questions
