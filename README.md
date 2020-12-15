@@ -13,13 +13,13 @@
         question](#how-r-can-help-you-to-ask-a-good-question)
           - [Include a minimal dataset with
             `dput`](#include-a-minimal-dataset-with-dput)
-          - [Create an example with runnable code using the `reprex`
-            package](#create-an-example-with-runnable-code-using-the-reprex-package)
+          - [Include an example with runnable code using the `reprex`
+            package](#include-an-example-with-runnable-code-using-the-reprex-package)
       - [5. Some words on code style](#some-words-on-code-style)
           - [Use styler on your reprex](#use-styler-on-your-reprex)
       - [Further ressources](#further-ressources)
           - [Good adresses for help and
-            inspiration:](#good-adresses-for-help-and-inspiration)
+            inspiration](#good-adresses-for-help-and-inspiration)
   - [Acknowledgements](#acknowledgements)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -230,12 +230,13 @@ More advanced (if your data is too large for dput):
 
 **Example**
 
-Assume you are using the built-in data set `mtcars` for your analysis.
-If you want to provide others with code that reproduces this data set,
-you can use `dput`. The output code of `dput` can be copy-pasted to any
-R session to reproduce the data set. If your data set is large, try to
-provide the minimum necessary to reproduce your problem. E.g. provide a
-subset with fewer columns and fewer rows.
+Assume you are using the built-in data set `mtcars` for your analysis
+and you want to provide others with code that reproduces this data set.
+You can simply copy-paste the output code of `dput` along with your
+question and anyone can copy-paste this to their R session to reproduce
+the data set. If your data set is large, try to provide the minimum
+necessary to reproduce your problem. E.g. provide a subset with fewer
+columns and fewer rows.
 
 ``` r
 # This is how the data looks like
@@ -254,18 +255,23 @@ dput(mtcars[1:5, 1:2])
 #> "Hornet 4 Drive", "Hornet Sportabout"), class = "data.frame")
 ```
 
-### Create an example with runnable code using the `reprex` package
+### Include an example with runnable code using the `reprex` package
 
-The reprex package helps you turn your code into reproducible examples.
+The reprex package helps you turn your code into **{repr}**oducible
+**{ex}**amples.
 
 **Why should you use this package?**
 
-Because - you never have to copy paste code from the RStudio Console
-again - you don’t have to do the code formatting in another program -
-talking about code is more productive when: - code actually runs: it’s
-annoying to fix the code before answering the question - code does not
-have to be run: people can often already see the mistake from code and
-output without running it themselves - code can easily be run
+Because
+
+  - you never have to copy paste code from the RStudio Console again
+  - you don’t have to do the code formatting in another program
+  - talking about code is more productive when:
+      - code actually runs: it’s annoying to fix the code before
+        answering the question
+      - code does not have to be run: people can often already see the
+        mistake from code and output without running it themselves
+      - code can easily be run
 
 **In which situations is this helpful?**
 
@@ -275,19 +281,17 @@ output without running it themselves - code can easily be run
   - When you want to paste R code in a highlighted and formatted form
     somewhere else
 
-**How to do this?**
+**How to create a reprex?**
 
-Before you get started, first (install) and load the `reprex` package
-(Consider adding reprex to your RStudio profile if you use it more
-often. Then you don’t have to load it every time you need it)
+Before you get started, (install and load) the `reprex` package.
 
 ``` r
 install.packages("reprex")
 library(reprex)
 ```
 
-Assume your code looks like this and you want to know why the output is
-strange
+Assume your code looks like the following and you want to know why it
+does not produce the output that you expected.
 
 ``` r
 x <- factor("a")
@@ -295,30 +299,40 @@ y <- factor("b")
 c(x,y)
 ```
 
-You can simply copy the code from your R script to the clipboard and
-then call the `reprex()` function in the console. Then will then see the
-output in the Viewer Pane of R Studio or in the browser. What also
-happened is, that the content of your clipboard changed. If you now
-paste the content of your clipboard somewhere, you will see that it is
-formatted as markdown, including the code, but also the console output
-that it created. This can now be be pasted into your question e.g. on
-Github.
+To turn the code above into a reproducible example, you can simply copy
+the code from your R script to the clipboard and then call the
+`reprex()` function in the console. Then, the example will be rendered
+automatically and you will see the output in the Viewer Pane of R Studio
+or in the browser. Also, the content of your clipboard changed. If you
+now paste the content of your clipboard somewhere, you will see that it
+now contains your code including the output as formatted markdown. This
+can now be be pasted alongside your question e.g. on Github.
 
 Not all platforms support this kind of markdown syntax and you can
-specify to which platform the output of reprex should be tuned to by
-using the `venue` argument.
+specify the platform to which the output of reprex should be tuned to.
+This is done by using the `venue` argument.
 
-Those are some of the options:
+Also, I suggest you have a look at `?reprex` to find out about all the
+other useful arguments that you can feed this function with.
+
+Those are some of the options (note that here the code example is not
+copied to the clipboard but given directly as an argument to `reprex`.
+This is also possible):
 
 ``` r
-# GitHub (default) (this is also good for Discord, you only have to remove the white space between 
-# the backticks and the r)
+# GitHub flavoured markdown (default) 
+# this is also good for Discord, you only have to remove the white space between 
+# the backticks and the r
 # you can also include your session info with si = TRUE
+# exclude the advertisement below the example with advertise = FALSE
+# don't show the rendered output in RStudio or the browser with show = FALSE
 reprex(mean(rnorm(100)),
        venue = "gh",
-       si = TRUE)
+       si = TRUE,
+       advertise = FALSE,
+       show = FALSE)
 
-# Stack Overflow (this is also not bad for Discord)
+# Stack Overflow
 reprex(mean(rnorm(100)),
        venue = "so")
 
@@ -330,18 +344,15 @@ reprex(mean(rnorm(100)),
 reprex(mean(rnorm(100)),
        venue = "html")
 
-# as an rtf (experimental, so far only really works on mac because you need the command line
+# rtf (experimental, so far only really works on mac because you need the command line
 # tool highlight installed)
-# but it's perfect to create code snippets e.g. for powerpoint etc
-# you can exclude the advertisement for reprex with advertise = F
+# but it's perfect to create highlighted code snippets e.g. for powerpoint & co
 # see also here if you want to use it (on Mac) https://reprex.tidyverse.org/articles/articles/rtf.html
 reprex(mean(rnorm(100)),
-       venue = "rtf",
-       advertise = FALSE
-       )
+       venue = "rtf")
 ```
 
-If the code you want to talk about includes figures reprex is even more
+If the code you want to talk about includes figures, reprex is even more
 useful. Assume your code looks like this:
 
 ``` r
@@ -353,29 +364,14 @@ ggplot(cars, aes(x=dist, y=speed)) +
 ```
 
 If you now copy this code to the clipboard, call `reprex()` and paste
-it, you will see that the image was added to the markdown output. You
-can now post this somewhere and the image will already be included. No
-need to add a png, make a screenshot or let people you want help from
-run the code themselves to see the output.
-
-You can also provide the example directly as an input argument to
-`reprex()` without copying to the clipboard before, e.g.
-
-``` r
-reprex({
-  x <- rnorm(100)
-  y <- rnorm(100)
-  cor(x,y)
-})
-```
-
-If you now call this, your rendered reprex will be on your clipboard and
-can be pasted somewhere.
+it, you will see that the plot was also added to the markdown output. No
+need to add a png or your plot, make a screenshot or let people run the
+code themselves to see the output.
 
 **So which setup should be chosen for the discussion forum in
 Blackboard?**
 
-Unfortunately, neither the blackboard forum nor the Webex meetings chat
+Unfortunately, neither the blackboard forum, nor the Webex meetings chat
 does support markdown formatting. If you use the forum, Webex chat or
 Email to share your code I therefore suggest to use `venue = "r"`. This
 does not support syntax highlighting and does not include plots but it
@@ -385,14 +381,14 @@ So a concrete example would be:
 
 ``` r
 # This includes the session info and does not show the rendered reprex locally 
-reprex(venue="r",show=FALSE, si=TRUE)
+reprex(venue = "r", show = FALSE, si = TRUE)
 ```
 
 If you want to include a plot in your reproducible example, I suggest
-you use `venu = "html"`. So something like:
+you use `venue = "html"`. So something like:
 
 ``` r
-reprex(venue="html",show=FALSE, si=TRUE)
+reprex(venue = "html", show = FALSE, si = TRUE)
 ```
 
 A link to the image is included in the html and the plot will be shown
@@ -405,35 +401,88 @@ If you click on the HTML button, a window opens, where your post is
 shown in html format. Your can just past your reproducible example in
 there after inserting a new line.
 
-#### Addins
-
-If you install the reprex package, you will find two Addins (in the top
-row of RStudio, right below Help). There is the addin `Reprex
-selection`. If you click this, the code that is currently highlighted by
-your mouse will be turned into a reprex. You can also bind this to a
-keyboard shortcut then you neither have to click this button nor call a
-function to create a reprex (under `Tools -> Modify Keyboard
-Shortcuts`). You can also highlight code and then use the Addin `Render
-reprex` which lets you specify source of the reprex, target venue etc.
-
 #### The other way around with `reprex_clean()`
 
-If you copy some code e.g. from Stack Overflow and paste it into your R
-session to run it, you can do it the other way around. Copy the code
-(including comments of the answer) to the clipboard and run
-`reprex_clean()`. Now you can paste the clean code into your R-Script.
+If you copy a code example e.g. from Stack Overflow and paste it into
+your R session to run it, you can use `reprex` to turn the example into
+runnable code without the output. Just copy the code (including comments
+of the answer) to the clipboard and run `reprex_clean()`. Now you can
+paste the clean code into your R-Script.
+
+#### Other ways to produce a reprex
+
+**Use the Addin**
+
+If you installed the reprex package, have a look at your RStudio Addins.
+There, you will find a section for `reprex` with two option: `Reprex
+selection` and `Render reprex`:
+
+![](images/Addin.png)<!-- -->
+
+You can highlight the code that you want to turn into a reprex and then
+click `Reprex selection`. This will render a reprex from your
+highlighted code. You can also highlight code and then use the Addin
+`Render reprex` which lets you specify source of the reprex, target
+venue etc instead of using the default values.
+
+<a name="shortcut"></a>**Use a keyboard shortcut**
+
+You can also bind the two functions `Reprex selection` and `Render
+reprex` to a keyboard shortcut of your choice. Then you neither have to
+click any button nor call a function to create a reprex. You can do that
+by going to `Tools -> Modify Keyboard Shortcuts`. Then filter the list
+with `reprex` and you can assign a keyboard shortcut of your choice (of
+course it has to be a shortcut unused by other functions).
+
+**Add `reprex` to your `.Rprofile`**
+
+If you use the reprex package often, and you don’t want to load it into
+your R session every time, adding reprex to your R profile. Then you
+don’t have to load it every time you need it. You can also change the
+default behavior of reprex there, if you e.g. always want to turn of the
+advertising.
+
+Just add the following to your `.Rprofile:`
+
+``` r
+if (interactive()) {
+  suppressMessages(require(reprex))
+}
+
+options(
+  reprex.show = FALSE,
+  reprex.advertise = FALSE,
+  reprex.style = TRUE
+)
+```
+
+You can locate your `.Rprofile` file by calling
+
+``` r
+file.path(Sys.getenv("HOME"), ".Rprofile")
+```
+
+You can also open up your `.Rprofile` using the function
+`edit_r_profile()` from the package
+[`usethis`](https://usethis.r-lib.org/index.html) (I won’t go into
+detail here, but this is a very useful package, you should check it
+out):
+
+``` r
+usethis::edit_r_profile()
+```
 
 ## 5\. Some words on code style
 
 If you share your code with others, it’s important that it is formatted
-in a readable way following good practice standards. There are different
-standards around, and this is not the place to talk about them. I just
-want to note, that there is a R package called `styler` which can apply
+in a readable way following good practice. There are different standards
+around, and this is not the place to talk about them. I just want to
+note, that there is an R package called `styler` which can apply
 different code style standards to your code.
 
 It provides functions to style a section of your code, a whole file or
-even an entire directory. I suggest you install and have a look at the
-package with
+even an entire directory. I suggest you install the package and have a
+look at it:
 
 ``` r
 install.packages("styler")
@@ -441,26 +490,31 @@ library(styler)
 ?`styler-package`
 ```
 
-When you installed the package, there is also a addin that you can use
+When you installed the package, you will find an addin that you can use
 to format your code. You can select the code you want to style with the
-mouse, got to `Addins->Style Selection` and voilà, your code is styled
+mouse and go to `Addins->Style Selection` and voilà, your code is styled
 nicely. By default, styler uses the style guide of the tidyverse (see
 [here](https://style.tidyverse.org/) for more info) which is a pretty
-common and well thought through standard. So you can just leave it like
-that.
+common and well thought through standard. If you are not sure which
+standard you want to use, this is a good default.
+
+[Like before with reprex](#shortcut), you can assign keyboard shortcuts
+to the styler functions. That way, it is very easy to select some code
+and quickly style it following the standard.
 
 ### Use styler on your reprex
 
 If you don’t want to style the code in your script, you should
 definitely consider styling the reproducible example that you provide.
 Fortunately, there is an argument `style` that you can pass into the
-reprex function that does that for you.
+reprex function that does that for you. Note that to use this, you need
+to install the `styler` package first.
 
 ``` r
-reprex(venue="r", show=FALSE, si=TRUE, style=TRUE)
+reprex(venue = "r", show = FALSE, si = TRUE, style = TRUE)
 ```
 
-Like that, the reprex on your clipboard will be styled according to the
+Now the reprex on your clipboard will be styled according to the
 tidyverse style guide.
 
 ## Further ressources
@@ -471,8 +525,10 @@ tidyverse style guide.
     video\](video\](<https://community.rstudio.com/t/video-reproducible-examples-and-the-reprex-package/14732>)
   - Github repository of the [`styler`
     package](https://github.com/r-lib/styler)
+  - What they forgot to teach you about R, [book](https://rstats.wtf/)
+    by Jenny Bryan and Jim Hester
 
-### Good adresses for help and inspiration:
+### Good adresses for help and inspiration
 
   - [Stack Overflow](https://stackoverflow.com): Probably the most
     famous forum for questions
