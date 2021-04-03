@@ -526,8 +526,8 @@ tidyverse style guide.
 
   - more on how to make great reproducible examples in R
     [here](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example)
-  - great intro to the `reprex` package by Jenny Bryan in \[this
-    video video\](<https://community.rstudio.com/t/video-reproducible-examples-and-the-reprex-package/14732>)
+  - great intro to the `reprex` package by Jenny Bryan in [this
+    video video](<https://community.rstudio.com/t/video-reproducible-examples-and-the-reprex-package/14732>)
   - Github repository of the [`styler`
     package](https://github.com/r-lib/styler)
   - What they forgot to teach you about R, [book](https://rstats.wtf/)
